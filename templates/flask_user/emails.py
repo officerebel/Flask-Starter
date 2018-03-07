@@ -7,7 +7,7 @@
 
 import smtplib
 import socket
-from flask import current_app, render_template
+from flask import current_application, render_template
 
 def _render_email(filename, **kwargs):
     # Render subject
@@ -26,7 +26,7 @@ def send_email(recipient, subject, html_message, text_message):
     """ Send email from default sender to 'recipient' """
 
     # Disable email sending when testing
-    if current_app.testing: return
+    if current_application.testing: return
 
     class SendEmailError(Exception):
         pass
@@ -38,7 +38,7 @@ def send_email(recipient, subject, html_message, text_message):
         raise SendEmailError("Flask-Mail has not been installed. Use 'pip install Flask-Mail' to install Flask-Mail.")
 
     # Make sure that Flask-Mail has been initialized
-    mail_engine = current_app.extensions.get('mail', None)
+    mail_engine = current_application.extensions.get('mail', None)
     if not mail_engine:
         raise SendEmailError('Flask-Mail has not been initialized. Initialize Flask-Mail or disable USER_SEND_PASSWORD_CHANGED_EMAIL, USER_SEND_REGISTERED_EMAIL and USER_SEND_USERNAME_CHANGED_EMAIL')
 
@@ -58,7 +58,7 @@ def send_email(recipient, subject, html_message, text_message):
         raise SendEmailError('SMTP Authentication error: Check your MAIL_USERNAME and MAIL_PASSWORD settings.')
 
 def get_primary_user_email(user):
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     db_adapter = user_manager.db_adapter
     if db_adapter.UserEmailClass:
         user_email = db_adapter.find_first_object(db_adapter.UserEmailClass,
@@ -71,7 +71,7 @@ def get_primary_user_email(user):
 
 def send_confirm_email_email(user, user_email, confirm_email_link):
     # Verify certain conditions
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     if not user_manager.enable_email: return
     if not user_manager.send_registered_email and not user_manager.enable_confirm_email: return
 
@@ -83,7 +83,7 @@ def send_confirm_email_email(user, user_email, confirm_email_link):
     subject, html_message, text_message = _render_email(
             user_manager.confirm_email_email_template,
             user=user,
-            app_name=user_manager.app_name,
+            app_name=user_manager.application_name,
             confirm_email_link=confirm_email_link)
 
     # Send email message using Flask-Mail
@@ -91,7 +91,7 @@ def send_confirm_email_email(user, user_email, confirm_email_link):
 
 def send_forgot_password_email(user, user_email, reset_password_link):
     # Verify certain conditions
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     if not user_manager.enable_email: return
     assert user_manager.enable_forgot_password
 
@@ -103,7 +103,7 @@ def send_forgot_password_email(user, user_email, reset_password_link):
     subject, html_message, text_message = _render_email(
             user_manager.forgot_password_email_template,
             user=user,
-            app_name=user_manager.app_name,
+            app_name=user_manager.application_name,
             reset_password_link=reset_password_link)
 
     # Send email message using Flask-Mail
@@ -111,7 +111,7 @@ def send_forgot_password_email(user, user_email, reset_password_link):
 
 def send_password_changed_email(user):
     # Verify certain conditions
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     if not user_manager.enable_email: return
     if not user_manager.send_password_changed_email: return
 
@@ -125,14 +125,14 @@ def send_password_changed_email(user):
     subject, html_message, text_message = _render_email(
             user_manager.password_changed_email_template,
             user=user,
-            app_name=user_manager.app_name)
+            app_name=user_manager.application_name)
 
     # Send email message using Flask-Mail
     user_manager.send_email_function(email, subject, html_message, text_message)
 
 def send_registered_email(user, user_email, confirm_email_link):    # pragma: no cover
     # Verify certain conditions
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     if not user_manager.enable_email: return
     if not user_manager.send_registered_email: return
 
@@ -144,7 +144,7 @@ def send_registered_email(user, user_email, confirm_email_link):    # pragma: no
     subject, html_message, text_message = _render_email(
             user_manager.registered_email_template,
             user=user,
-            app_name=user_manager.app_name,
+            app_name=user_manager.application_name,
             confirm_email_link=confirm_email_link)
 
     # Send email message using Flask-Mail
@@ -152,7 +152,7 @@ def send_registered_email(user, user_email, confirm_email_link):    # pragma: no
 
 def send_username_changed_email(user):  # pragma: no cover
     # Verify certain conditions
-    user_manager =  current_app.user_manager
+    user_manager =  current_application.user_manager
     if not user_manager.enable_email: return
     if not user_manager.send_username_changed_email: return
 
@@ -166,20 +166,20 @@ def send_username_changed_email(user):  # pragma: no cover
     subject, html_message, text_message = _render_email(
             user_manager.username_changed_email_template,
             user=user,
-            app_name=user_manager.app_name)
+            app_name=user_manager.application_name)
 
     # Send email message using Flask-Mail
     user_manager.send_email_function(email, subject, html_message, text_message)
 
 def send_invite_email(user, accept_invite_link):
-    user_manager = current_app.user_manager
+    user_manager = current_application.user_manager
     if not user_manager.enable_email: return
 
     # Render subject, html message and text message
     subject, html_message, text_message = _render_email(
             user_manager.invite_email_template,
             user=user,
-            app_name=user_manager.app_name,
+            app_name=user_manager.application_name,
             accept_invite_link=accept_invite_link)
 
     # Send email message using Flask-Mail
