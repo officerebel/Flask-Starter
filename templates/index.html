@@ -1,0 +1,198 @@
+<!--<html>-->
+
+<!--<body>-->
+<!--<div>-->
+<!--<h1> Hier alle vestegingen</h1>-->
+<!--<a href="{{ url_for('admin.index') }}">Login!</a>-->
+<!--</div>-->
+<!--</body>-->
+
+
+<!--</html>-->
+
+
+{% block body %}
+
+<html>
+
+
+
+
+
+
+</html>
+
+
+<html lang="en">
+
+<head>
+    <title>The CodeRebels</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+        /* Add a gray background color and some padding to the footer */
+
+        footer {
+            background-color: #24ec12;
+            padding: 25px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            /* Set width to 100% */
+            margin: auto;
+            min-height: 200px;
+        }
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+
+        .navbar-inverse .navbar-collapse,
+        .navbar-inverse .navbar-form
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#">The Code Rebels</a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Scratch</a></li>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">Python</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+                    <li> <a href="/admin/">je bent ingelogd!</a></li>
+                    <li> <a href="/admin/">Naar Admin Console</a></li>
+                    <li> <a href="/admin/logout/ ">Logout!</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<body class="no-js"> <img src="http://rebels-app.a2t6risjzg.eu-west-1.elasticbeanstalk.com/static/images/borntocode.png" width="200" height="auto " alt="" class="logo"></div>
+
+ <footer class="container-fluid text-center">
+        <h1>Scratch voor beginners</h1>
+    </footer>
+    <div class="container text-center">
+        <h3>Scratch voor beginners</h3><br>
+        <div class="row">
+        <div class="col-sm-4">
+            <a href="pop_up_scratch"> <img src="/static/images/scratch_tegel.png"" class="img-responsive" style="width:100%" alt="Image"> </a>
+
+                <h3>Scratch introductie </h3>
+            </div>
+
+            <!--<div class="col-sm-4">-->
+                <!--<img src="/static/images/scratch_tegel.png" class="img-responsive" style="width:100%" alt="Image">-->
+                <!--<p>Python Start Project2 </p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<div class="well">-->
+                    <!--<p>Met scratch kun je de basis leren van programmeren. </p>-->
+                <!--</div>-->
+                <!--<div class="well">-->
+                    <!--<p>Some text..</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div><br>
+
+
+
+
+
+<!-- module 2 -->
+
+<footer class="container-fluid text-center">
+        <h1>HTML voor beginners</h1>
+    </footer>
+    <div class="container text-center">
+        <h3>HTML voor beginners</h3><br>
+        <div class="row">
+        <div class="col-sm-4">
+            <a href="pop_up_html"> <img src="/static/images/Kid-Programming-637x369.jpg" class="img-responsive" style="width:100%" alt="Image"> </a>
+
+                <h3>HTML introductie </h3>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="/static/images/Kid-Programming-637x369.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <h3>HTML stap 2 </h3>
+            </div>
+            <div class="col-sm-4">
+                <div class="well">
+                    <p>Met scratch kun je de basis leren van programmeren. </p>
+                </div>
+                <div class="well">
+                    <p>Some text..</p>
+                </div>
+            </div>
+        </div>
+    </div><br>
+        <footer class="container-fluid text-center">
+        <h1>Python voor beginners</h1>
+    </footer>
+    <div class="container text-center">
+        <h3>Python voor beginners</h3><br>
+        <div class="row">
+        <div class="col-sm-4">
+            <a href="pop_up_python">  <img src="/static/images/Kid-Programming-637x369.jpg" class="img-responsive" style="width:100%" alt="Image"> </a>
+
+                <h3>Python introductie </h3>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="/static/images/Kid-Programming-637x369.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <p>Python Start Project2 </p>
+            </div>
+            <div class="col-sm-4">
+                <div class="well">
+                    <p>Met scratch kun je de basis leren van programmeren. </p>
+                </div>
+                <div class="well">
+                    <p>Some text..</p>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+
+
+
+    <footer class="container-fluid text-center">
+        <h1>Footer Text</h1>
+    </footer>
+
+</body>
+
+</html>
+{% endblock body %}
