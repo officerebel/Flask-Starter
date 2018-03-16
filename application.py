@@ -38,9 +38,9 @@ user_manager = UserManager(db_adapter, application)
 def index():
     return render_template('index.html')
 
-# @application.route('/')
-# def index():
-#     return render_template('base.html')
+@application.route('/base')
+def base():
+    return render_template('base.html')
 
 @application.route("/page")
 def page():

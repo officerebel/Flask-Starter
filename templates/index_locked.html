@@ -1,4 +1,26 @@
+ {% block body %}
+    <div id="header-div" class="clearfix with-margins">
+        <div class="pull-left"><a href="/"><h1 class="no-margins">The Code Rebels</h1></a></div>
+        <div class="pull-right">
+            {% if call_or_get(current_user.is_authenticated) %}
+                <a href="{{ url_for('user.profile') }}">{{ current_user.username }}</a>
+                &nbsp; | &nbsp;
+                <a href="{{ url_for('user.logout') }}">Sign out</a>
+            {% else %}
+                <a href="{{ url_for('user.login') }}">Sign in</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
 
+{% block menu %}
+    <div id="menu-div" class="with-margins">
+        <a href="/">Home</a>
+        {% if call_or_get(current_user.is_authenticated) %}
+            &nbsp; | &nbsp; <a href="{{ url_for('user.profile') }}">User profile</a>
+        {% endif %}
+    </div>
+    {% endblock %}
 
 <body class="no-js"> <img src="http://rebels-app.a2t6risjzg.eu-west-1.elasticbeanstalk.com/static/images/borntocode.png" width="200" height="auto " alt="" class="logo"></div>
 
