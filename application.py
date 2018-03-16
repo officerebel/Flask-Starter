@@ -61,5 +61,7 @@ def pop_up_scratch():
     return render_template("pop_up_scratch.html")
 
 
+
+
 if __name__ == '__main__':
     application.run(debug=True) 
