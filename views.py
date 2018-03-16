@@ -33,3 +33,9 @@ def reset():
 
         return redirect(url_for('index'))
     return render_template('reset.html', form=form)
+
+
+
+@application.route("/page")
+def page():
+    return render_template("/page.html")
