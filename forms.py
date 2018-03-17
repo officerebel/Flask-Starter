@@ -7,3 +7,4 @@ class EmailForm(Form):
 
 class PasswordForm(Form):
     password = PasswordField('Password', validators=[DataRequired()])
+

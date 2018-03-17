@@ -39,3 +39,7 @@ def reset():
 @application.route("/page")
 def page():
     return render_template("/page.html")
+
+
+
+
